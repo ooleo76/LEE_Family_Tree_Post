@@ -225,7 +225,7 @@ function renderPeople(){
         <div><label>生年（選填）</label><input type="text" data-f="birth" value="${p.birth}" placeholder="例：1990"></div>
         <div><label>卒年（選填）</label><input type="text" data-f="death" value="${p.death}" placeholder="在世留白"></div>
         <div class="full"><label>照片網址（選填）</label><input type="text" data-f="photo" value="${p.photo}" placeholder="https://…"></div>
-        <div class="full"><label>備註（選填）</label><input type="text" data-f="note" value="${p.note}" placeholder="如：早年遷居…"></div>
+        <div class="full"><label>備註（選填）</label><input type="text" data-f="note" value="${p.note}" placeholder="如：XXX長子、XXX次女…"></div>
       </div>`;
     d.querySelectorAll('input[data-f]').forEach(inp=>inp.addEventListener('input',()=>{p[inp.dataset.f]=inp.value;}));
     d.querySelectorAll('.sexseg button').forEach(b=>b.addEventListener('click',()=>{p.sex=b.dataset.sex;d.querySelectorAll('.sexseg button').forEach(x=>x.classList.toggle('on',x===b));}));
