@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>李氏族譜 · 補登投稿</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#efe7d6;--ink:#2a2420;--ink-soft:#5d544a;--lacquer:#2b1a17;--lacquer-2:#3a2420;
+  --cinnabar:#b22a1f;--cinnabar-soft:#c4584c;--gold:#c9a227;--gold-soft:#d8bd6a;--muted:#8a7e6a;
+  --line:rgba(42,36,32,.18);--field:#fbf7ec;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans TC",system-ui,sans-serif;color:var(--ink);background:var(--paper);
+  background-image:radial-gradient(circle at 15% 0%,rgba(255,255,255,.3),transparent 40%);min-height:100vh}
+.wrap{max-width:620px;margin:0 auto;padding:0 16px 60px}
+.hero{background:linear-gradient(160deg,var(--lacquer),var(--lacquer-2));color:#f3e9d2;
+  margin:0 -16px 0;padding:22px 22px 18px;border-bottom:3px solid var(--gold);position:relative;overflow:hidden}
+.hero::before{content:"補 登";position:absolute;top:6px;right:18px;writing-mode:vertical-rl;font-family:"Noto Serif TC",serif;
+  font-weight:900;font-size:62px;color:rgba(201,162,39,.1);letter-spacing:.1em}
+.eyebrow{font-size:11px;letter-spacing:.34em;color:var(--gold-soft);font-weight:700;margin-bottom:6px}
+.hero h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:26px;margin:0 0 6px;letter-spacing:.06em;color:#f7eed6}
+.hero p{font-size:12.5px;color:#cdbd97;line-height:1.7;margin:0;max-width:440px}
+
+.step{background:var(--field);border:1px solid var(--line);border-radius:10px;padding:16px 16px 18px;margin-top:16px;box-shadow:0 2px 6px rgba(43,26,23,.06)}
+.step-h{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+.step-no{flex:0 0 24px;height:24px;border-radius:50%;background:var(--cinnabar);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.step-t{font-family:"Noto Serif TC",serif;font-weight:700;font-size:16px;color:var(--ink);letter-spacing:.04em}
+.step-sub{font-size:12px;color:var(--muted);margin:-6px 0 12px 33px}
+
+label{display:block;font-size:12.5px;color:var(--ink-soft);margin:0 0 4px;font-weight:500}
+select,input[type=text]{width:100%;font-family:inherit;font-size:15px;color:var(--ink);background:#fff;
+  border:1.5px solid var(--line);border-radius:7px;padding:9px 11px;outline:none}
+select:focus,input:focus{border-color:var(--cinnabar);box-shadow:0 0 0 3px rgba(178,42,31,.1)}
+.chain-row{margin-bottom:10px}
+.chain-row .gtag{font-size:11px;color:var(--cinnabar);font-weight:700;letter-spacing:.05em;margin-bottom:3px;display:block}
+
+.parent-now{margin-top:6px;background:rgba(178,42,31,.06);border:1px dashed var(--cinnabar-soft);border-radius:8px;
+  padding:10px 12px;font-size:13.5px;color:var(--ink)}
+.parent-now b{font-family:"Noto Serif TC",serif;color:var(--cinnabar);font-size:16px}
+.parent-now .g{color:var(--muted);font-size:12px}
+
+.person{border:1px solid var(--line);border-radius:9px;padding:12px;margin-bottom:10px;background:#fff;position:relative}
+.person .pno{position:absolute;top:-9px;left:12px;background:var(--gold);color:var(--lacquer);font-size:11px;font-weight:700;border-radius:8px;padding:1px 8px}
+.person .rm{position:absolute;top:8px;right:8px;border:0;background:none;color:var(--muted);font-size:18px;cursor:pointer;line-height:1}
+.person .rm:hover{color:var(--cinnabar)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.grid .full{grid-column:1/-1}
+.sexseg{display:flex;border:1.5px solid var(--line);border-radius:7px;overflow:hidden}
+.sexseg button{flex:1;font-family:inherit;font-size:14px;color:var(--ink-soft);background:#fff;border:0;border-left:1px solid var(--line);padding:9px 0;cursor:pointer}
+.sexseg button:first-child{border-left:0}
+.sexseg button.on{background:var(--cinnabar);color:#fff}
+.addbtn{width:100%;border:1.5px dashed var(--cinnabar-soft);background:rgba(178,42,31,.04);color:var(--cinnabar);
+  font-family:inherit;font-size:14px;font-weight:500;border-radius:8px;padding:10px;cursor:pointer;margin-top:2px}
+.addbtn:hover{background:rgba(178,42,31,.09)}
+
+.submit{width:100%;margin-top:18px;border:0;background:linear-gradient(160deg,var(--cinnabar),#9a2017);color:#fff;
+  font-family:"Noto Serif TC",serif;font-weight:700;font-size:17px;letter-spacing:.1em;border-radius:9px;padding:14px;cursor:pointer;
+  box-shadow:0 4px 12px rgba(178,42,31,.3)}
+.submit:hover{filter:brightness(1.06)} .submit:disabled{opacity:.5;cursor:not-allowed}
+.hint{font-size:11.5px;color:var(--muted);text-align:center;margin-top:10px;line-height:1.7}
+
+.msg{display:none;text-align:center;padding:40px 16px}
+.msg .ic{font-size:46px;color:var(--cinnabar)} .msg.ok .ic{color:#2e9b57}
+.msg .big{font-family:"Noto Serif TC",serif;font-size:20px;margin:10px 0 6px;color:var(--ink)}
+.msg .sm{font-size:13px;color:var(--ink-soft);line-height:1.8}
+.msg button{margin-top:16px;border:1.5px solid var(--cinnabar);background:#fff;color:var(--cinnabar);font-family:inherit;font-size:14px;border-radius:8px;padding:9px 18px;cursor:pointer}
+.loading{text-align:center;color:var(--muted);padding:50px 0;font-size:14px}
+.spin{width:28px;height:28px;border:3px solid var(--line);border-top-color:var(--cinnabar);border-radius:50%;animation:sp 1s linear infinite;margin:0 auto 12px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.errbox{display:none;background:#fbeae8;border:1px solid #d99;color:#a33;border-radius:8px;padding:12px;font-size:13px;margin-top:14px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">雲林 · 元長 · 山內村　隴西李氏</div>
+    <h1>族譜補登投稿</h1>
+    <p>幫忙補齊家族成員：先一層層選到「父母是誰」，再填上新成員（可一次多位）。送出後由族譜管理者審核併入，不會直接更動主族譜。</p>
+  </div>
+
+  <div id="loading" class="loading"><div class="spin"></div>讀取族譜中…</div>
+  <div id="errbox" class="errbox"></div>
+
+  <div id="form" style="display:none">
+    <div class="step">
+      <div class="step-h"><div class="step-no">1</div><div class="step-t">選擇所屬房系</div></div>
+      <select id="houseSel"><option value="">— 請選擇 —</option></select>
+    </div>
+
+    <div class="step" id="chainStep" style="display:none">
+      <div class="step-h"><div class="step-no">2</div><div class="step-t">逐代選到「父母」</div></div>
+      <div class="step-sub">從上往下一代一代選；選到要新增者的父母為止，下一格留「就以…為父母」即可。</div>
+      <div id="chain"></div>
+      <div class="parent-now" id="parentNow"></div>
+    </div>
+
+    <div class="step" id="peopleStep" style="display:none">
+      <div class="step-h"><div class="step-no">3</div><div class="step-t">填寫新增成員</div></div>
+      <div class="step-sub">可一次新增多位（都掛在上面選定的父母底下）。姓名請含姓。</div>
+      <div id="people"></div>
+      <button class="addbtn" id="addBtn">＋ 再加一位</button>
+    </div>
+
+    <div class="step" id="byStep" style="display:none">
+      <div class="step-h"><div class="step-no">4</div><div class="step-t">你是誰（方便管理者確認）</div></div>
+      <div class="grid">
+        <div><label>投稿人姓名（選填）</label><input id="by" type="text" placeholder="例：李○○"></div>
+        <div><label>聯絡方式（選填）</label><input id="contact" type="text" placeholder="電話／LINE／Email"></div>
+      </div>
+    </div>
+
+    <button class="submit" id="submitBtn" style="display:none">送　出　投　稿</button>
+    <div class="hint" id="hint" style="display:none">送出後資料會進入「投稿」分頁等待審核，不會立即出現在族譜上。</div>
+  </div>
+
+  <div class="msg" id="msg"></div>
+</div>
+
+<script>
+/* ===== 設定：與族譜網頁用同一個 GAS /exec 網址 ===== */
+const GAS_URL = "";
+
+const CN={'一':1,'二':2,'三':3,'四':4,'五':5,'六':6,'七':7,'八':8,'九':9,'十':10};
+function genOfKey(k){const m=String(k).match(/^第(.+)代$/);if(!m)return null;return CN[m[1]]||parseInt(m[1])||null;}
+function genCN(n){const a=['','一','二','三','四','五','六','七','八','九','十'];return (n<=10?a[n]:n)+'代';}
+function parentName(note){return note?note.replace(/[長次三四五六七八九十兩幼么元滿大小細]?[子女男]$/,'').trim():'';}
+function numCN(n){const a=['','一','二','三','四','五','六','七','八','九','十'];if(n<=10)return a[n];if(n<20)return '十'+a[n-10];return String(n);}
+function rankRole(n,sex){return (n===1?'長':n===2?'次':numCN(n))+(sex==='女'?'女':'子');}
+
+function buildHouse(rows){
+  const nodes=[];
+  rows.forEach((r,idx)=>{
+    let gen=null,name='';
+    for(const k in r){const g=genOfKey(k);if(g&&String(r[k]).trim()){gen=g;name=String(r[k]).trim();break;}}
+    if(!name)return;
+    const note=(r['備註']||'').trim();
+    const sexCN=(String(r['子女']||'').trim()==='女')?'女':'子';
+    nodes.push({row:idx,gen,name,note,sexCN,role:'',children:[]});
+  });
+  let root=null;
+  nodes.forEach((n,i)=>{
+    if(n.gen===1){if(!root)root=n;return;}
+    const pn=parentName(n.note);let parent=null;
+    for(let j=i-1;j>=0;j--){if(nodes[j].gen===n.gen-1&&nodes[j].name===pn){parent=nodes[j];break;}}
+    if(!parent)for(let j=i-1;j>=0;j--){if(nodes[j].gen===n.gen-1){parent=nodes[j];break;}}
+    (parent||root).children.push(n);
+  });
+  (function rank(n){let c=0,d=0;n.children.forEach(k=>{if(k.sexCN==='女'){d++;k.role=rankRole(d,'女');}else{c++;k.role=rankRole(c,'子');}rank(k);});})(root);
+  return root;
+}
+
+/* ---- 取資料（JSONP；本機測試用 __MOCK__）---- */
+function jsonp(url){return new Promise((res,rej)=>{
+  const cb='__cb_'+Math.random().toString(36).slice(2);const s=document.createElement('script');
+  window[cb]=d=>{res(d);delete window[cb];s.remove();};
+  s.onerror=()=>{rej(new Error('連線失敗'));s.remove();};
+  s.src=url+(url.includes('?')?'&':'?')+'callback='+cb;document.body.appendChild(s);
+  setTimeout(()=>{if(window[cb]){delete window[cb];s.remove();rej(new Error('逾時'));}},12000);
+});}
+
+let HOUSES={};   // 房名 -> root
+const HOUSE_LABEL={'李墻':'大房（李墻）','李仁':'二房（李仁）','李居':'三房（李居）'};
+
+async function init(){
+  let data=null;
+  if(window.__MOCK__) data=window.__MOCK__;
+  else if(GAS_URL){ try{const j=await jsonp(GAS_URL); if(j&&j.ok) data=j.data;}catch(e){} }
+  if(!data){ showErr('讀不到族譜資料。請確認本檔最上方的 GAS_URL 已填、且 GAS 已部署為「任何人」可存取。'); return; }
+  Object.keys(data).forEach(k=>{ HOUSES[k]=buildHouse(data[k]); });
+  const sel=document.getElementById('houseSel');
+  Object.keys(HOUSES).forEach(k=>{ if(!HOUSES[k])return; const o=document.createElement('option');o.value=k;o.textContent=HOUSE_LABEL[k]||k;sel.appendChild(o);});
+  document.getElementById('loading').style.display='none';
+  document.getElementById('form').style.display='block';
+}
+function showErr(m){document.getElementById('loading').style.display='none';const e=document.getElementById('errbox');e.style.display='block';e.textContent='⚠ '+m;}
+
+/* ---- 逐代連動 ---- */
+let chain=[];
+const houseSel=document.getElementById('houseSel');
+houseSel.addEventListener('change',()=>{
+  const h=houseSel.value;
+  if(!h){document.getElementById('chainStep').style.display='none';document.getElementById('peopleStep').style.display='none';document.getElementById('byStep').style.display='none';document.getElementById('submitBtn').style.display='none';document.getElementById('hint').style.display='none';return;}
+  chain=[HOUSES[h]];
+  document.getElementById('chainStep').style.display='block';
+  document.getElementById('peopleStep').style.display='block';
+  document.getElementById('byStep').style.display='block';
+  document.getElementById('submitBtn').style.display='block';
+  document.getElementById('hint').style.display='block';
+  renderChain();
+});
+function renderChain(){
+  const box=document.getElementById('chain');box.innerHTML='';
+  for(let i=0;i<chain.length;i++){
+    const parent=chain[i];
+    if(!parent.children||!parent.children.length)break;
+    const row=document.createElement('div');row.className='chain-row';
+    const tag=document.createElement('span');tag.className='gtag';tag.textContent='選 第'+numCN(parent.gen+1)+'代';
+    const sel=document.createElement('select');
+    const ph=document.createElement('option');ph.value='';ph.textContent='▸ 就以「'+parent.name+'」為父母（第'+numCN(parent.gen)+'代）';sel.appendChild(ph);
+    parent.children.forEach((c,idx)=>{const o=document.createElement('option');o.value=idx;o.textContent=c.name+'　'+(c.role||'');sel.appendChild(o);});
+    if(chain[i+1]){const idx=parent.children.indexOf(chain[i+1]);if(idx>=0)sel.value=String(idx);}
+    sel.addEventListener('change',()=>{chain=chain.slice(0,i+1);if(sel.value!=='')chain.push(parent.children[+sel.value]);renderChain();});
+    row.appendChild(tag);row.appendChild(sel);box.appendChild(row);
+  }
+  const p=chain[chain.length-1];
+  document.getElementById('parentNow').innerHTML=
+    `新成員將登記為 <b>${p.name}</b><span class="g">（第${numCN(p.gen)}代）</span> 的子女，屬 <b>第${numCN(p.gen+1)}代</b>。`;
+}
+
+/* ---- 新增成員 ---- */
+let people=[];let pid=0;
+function addPerson(){people.push({id:++pid,name:'',sex:'子',spouse:'',birth:'',death:'',photo:'',note:''});renderPeople();}
+function renderPeople(){
+  const box=document.getElementById('people');box.innerHTML='';
+  people.forEach((p,i)=>{
+    const d=document.createElement('div');d.className='person';
+    d.innerHTML=`<span class="pno">第 ${i+1} 位</span>${people.length>1?`<button class="rm" data-rm="${p.id}">×</button>`:''}
+      <div class="grid">
+        <div class="full"><label>姓名（含姓）<span style="color:var(--cinnabar)">*</span></label><input type="text" data-f="name" value="${p.name}" placeholder="例：李○○"></div>
+        <div><label>子 / 女</label><div class="sexseg" data-seg="${p.id}"><button data-sex="子" class="${p.sex==='子'?'on':''}">子</button><button data-sex="女" class="${p.sex==='女'?'on':''}">女</button></div></div>
+        <div><label>配偶（多位用、分隔，選填）</label><input type="text" data-f="spouse" value="${p.spouse}" placeholder="例：王○○"></div>
+        <div><label>生年（選填）</label><input type="text" data-f="birth" value="${p.birth}" placeholder="例：1990"></div>
+        <div><label>卒年（選填）</label><input type="text" data-f="death" value="${p.death}" placeholder="在世留白"></div>
+        <div class="full"><label>照片網址（選填）</label><input type="text" data-f="photo" value="${p.photo}" placeholder="https://…"></div>
+        <div class="full"><label>備註（選填）</label><input type="text" data-f="note" value="${p.note}" placeholder="如：早年遷居…"></div>
+      </div>`;
+    d.querySelectorAll('input[data-f]').forEach(inp=>inp.addEventListener('input',()=>{p[inp.dataset.f]=inp.value;}));
+    d.querySelectorAll('.sexseg button').forEach(b=>b.addEventListener('click',()=>{p.sex=b.dataset.sex;d.querySelectorAll('.sexseg button').forEach(x=>x.classList.toggle('on',x===b));}));
+    const rm=d.querySelector('[data-rm]');if(rm)rm.addEventListener('click',()=>{people=people.filter(x=>x.id!=p.id);renderPeople();});
+    box.appendChild(d);
+  });
+}
+document.getElementById('addBtn').addEventListener('click',addPerson);
+
+/* ---- 送出 ---- */
+document.getElementById('submitBtn').addEventListener('click',async()=>{
+  const valid=people.filter(p=>p.name.trim());
+  if(!houseSel.value){alert('請先選擇房系');return;}
+  if(!valid.length){alert('請至少填一位新成員的姓名');return;}
+  const parent=chain[chain.length-1];
+  const payload={house:houseSel.value,parent:parent.name,parentGen:parent.gen,
+    by:document.getElementById('by').value.trim(),contact:document.getElementById('contact').value.trim(),
+    people:valid.map(p=>({name:p.name.trim(),sex:p.sex,spouse:p.spouse.trim(),birth:p.birth.trim(),death:p.death.trim(),photo:p.photo.trim(),note:p.note.trim()}))};
+  const btn=document.getElementById('submitBtn');btn.disabled=true;btn.textContent='送出中…';
+  try{
+    if(window.__MOCK_SUBMIT__){ await window.__MOCK_SUBMIT__(payload); done(valid.length); }
+    else{
+      const url=GAS_URL+(GAS_URL.includes('?')?'&':'?')+'action=submit&payload='+encodeURIComponent(JSON.stringify(payload));
+      const r=await jsonp(url);
+      if(r&&r.ok) done(valid.length); else throw new Error(r&&r.error||'未知錯誤');
+    }
+  }catch(e){ btn.disabled=false;btn.textContent='送　出　投　稿'; alert('送出失敗：'+e.message+'\n請稍後再試，或聯絡族譜管理者。'); }
+});
+function done(n){
+  document.getElementById('form').style.display='none';
+  const m=document.getElementById('msg');m.className='msg ok';m.style.display='block';
+  m.innerHTML=`<div class="ic">✓</div><div class="big">已送出 ${n} 位，感謝補登！</div>
+    <div class="sm">資料已進入待審清單，<br>族譜管理者確認後會併入族譜。</div>
+    <button onclick="location.reload()">再投一筆</button>`;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+addPerson();
+init();
+</script>
+</body>
+</html>
