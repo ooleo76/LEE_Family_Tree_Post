@@ -3,30 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>李氏族譜 · 補登投稿</title>
+<title>李氏族譜 · 補登 / 修訂</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --paper:#efe7d6;--ink:#2a2420;--ink-soft:#5d544a;--lacquer:#2b1a17;--lacquer-2:#3a2420;
+:root{--paper:#efe7d6;--ink:#2a2420;--ink-soft:#5d544a;--lacquer:#2b1a17;--lacquer-2:#3a2420;
   --cinnabar:#b22a1f;--cinnabar-soft:#c4584c;--gold:#c9a227;--gold-soft:#d8bd6a;--muted:#8a7e6a;
-  --line:rgba(42,36,32,.18);--field:#fbf7ec;
-}
+  --line:rgba(42,36,32,.18);--field:#fbf7ec;--blue:#2f6f9f}
 *{box-sizing:border-box}
 body{margin:0;font-family:"Noto Sans TC",system-ui,sans-serif;color:var(--ink);background:var(--paper);
   background-image:radial-gradient(circle at 15% 0%,rgba(255,255,255,.3),transparent 40%);min-height:100vh}
 .wrap{max-width:620px;margin:0 auto;padding:0 16px 60px}
 .hero{background:linear-gradient(160deg,var(--lacquer),var(--lacquer-2));color:#f3e9d2;
   margin:0 -16px 0;padding:22px 22px 18px;border-bottom:3px solid var(--gold);position:relative;overflow:hidden}
-.hero::before{content:"補 登";position:absolute;top:6px;right:18px;writing-mode:vertical-rl;font-family:"Noto Serif TC",serif;
+.hero::before{content:"族 譜";position:absolute;top:6px;right:18px;writing-mode:vertical-rl;font-family:"Noto Serif TC",serif;
   font-weight:900;font-size:62px;color:rgba(201,162,39,.1);letter-spacing:.1em}
 .eyebrow{font-size:11px;letter-spacing:.34em;color:var(--gold-soft);font-weight:700;margin-bottom:6px}
 .hero h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:26px;margin:0 0 6px;letter-spacing:.06em;color:#f7eed6}
 .hero p{font-size:12.5px;color:#cdbd97;line-height:1.7;margin:0;max-width:440px}
 
+.modewrap{margin:16px 0 0}
+.modeseg{display:flex;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 2px 6px rgba(43,26,23,.06)}
+.modeseg button{flex:1;font-family:"Noto Serif TC",serif;font-weight:700;font-size:15.5px;letter-spacing:.06em;color:var(--ink-soft);
+  background:#fff;border:0;border-left:1px solid var(--line);padding:13px 0;cursor:pointer;transition:.15s}
+.modeseg button:first-child{border-left:0}
+.modeseg button.on{background:var(--cinnabar);color:#fff}
+.modeseg button.on.edit{background:var(--blue)}
+
 .step{background:var(--field);border:1px solid var(--line);border-radius:10px;padding:16px 16px 18px;margin-top:16px;box-shadow:0 2px 6px rgba(43,26,23,.06)}
 .step-h{display:flex;align-items:center;gap:9px;margin-bottom:12px}
 .step-no{flex:0 0 24px;height:24px;border-radius:50%;background:var(--cinnabar);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+body.editmode .step-no{background:var(--blue)}
 .step-t{font-family:"Noto Serif TC",serif;font-weight:700;font-size:16px;color:var(--ink);letter-spacing:.04em}
 .step-sub{font-size:12px;color:var(--muted);margin:-6px 0 12px 33px}
 
@@ -34,13 +41,16 @@ label{display:block;font-size:12.5px;color:var(--ink-soft);margin:0 0 4px;font-w
 select,input[type=text]{width:100%;font-family:inherit;font-size:15px;color:var(--ink);background:#fff;
   border:1.5px solid var(--line);border-radius:7px;padding:9px 11px;outline:none}
 select:focus,input:focus{border-color:var(--cinnabar);box-shadow:0 0 0 3px rgba(178,42,31,.1)}
+body.editmode select:focus,body.editmode input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(47,111,159,.12)}
 .chain-row{margin-bottom:10px}
 .chain-row .gtag{font-size:11px;color:var(--cinnabar);font-weight:700;letter-spacing:.05em;margin-bottom:3px;display:block}
+body.editmode .chain-row .gtag{color:var(--blue)}
 
-.parent-now{margin-top:6px;background:rgba(178,42,31,.06);border:1px dashed var(--cinnabar-soft);border-radius:8px;
-  padding:10px 12px;font-size:13.5px;color:var(--ink)}
+.parent-now{margin-top:6px;background:rgba(178,42,31,.06);border:1px dashed var(--cinnabar-soft);border-radius:8px;padding:10px 12px;font-size:13.5px;color:var(--ink)}
 .parent-now b{font-family:"Noto Serif TC",serif;color:var(--cinnabar);font-size:16px}
 .parent-now .g{color:var(--muted);font-size:12px}
+body.editmode .parent-now{background:rgba(47,111,159,.07);border-color:var(--blue)}
+body.editmode .parent-now b{color:var(--blue)}
 
 .person{border:1px solid var(--line);border-radius:9px;padding:12px;margin-bottom:10px;background:#fff;position:relative}
 .person .pno{position:absolute;top:-9px;left:12px;background:var(--gold);color:var(--lacquer);font-size:11px;font-weight:700;border-radius:8px;padding:1px 8px}
@@ -52,16 +62,17 @@ select:focus,input:focus{border-color:var(--cinnabar);box-shadow:0 0 0 3px rgba(
 .sexseg button{flex:1;font-family:inherit;font-size:14px;color:var(--ink-soft);background:#fff;border:0;border-left:1px solid var(--line);padding:9px 0;cursor:pointer}
 .sexseg button:first-child{border-left:0}
 .sexseg button.on{background:var(--cinnabar);color:#fff}
-.addbtn{width:100%;border:1.5px dashed var(--cinnabar-soft);background:rgba(178,42,31,.04);color:var(--cinnabar);
-  font-family:inherit;font-size:14px;font-weight:500;border-radius:8px;padding:10px;cursor:pointer;margin-top:2px}
+body.editmode .sexseg button.on{background:var(--blue)}
+.addbtn{width:100%;border:1.5px dashed var(--cinnabar-soft);background:rgba(178,42,31,.04);color:var(--cinnabar);font-family:inherit;font-size:14px;font-weight:500;border-radius:8px;padding:10px;cursor:pointer;margin-top:2px}
 .addbtn:hover{background:rgba(178,42,31,.09)}
+.idtag{display:inline-block;font-size:11px;color:var(--muted);background:#efe7d6;border:1px solid var(--line);border-radius:6px;padding:1px 7px;margin-left:6px;font-family:ui-monospace,monospace}
+.edited input{border-color:var(--blue);background:#f3f9fd}
+.curhint{font-size:11px;color:var(--muted);margin-top:3px}
 
-.submit{width:100%;margin-top:18px;border:0;background:linear-gradient(160deg,var(--cinnabar),#9a2017);color:#fff;
-  font-family:"Noto Serif TC",serif;font-weight:700;font-size:17px;letter-spacing:.1em;border-radius:9px;padding:14px;cursor:pointer;
-  box-shadow:0 4px 12px rgba(178,42,31,.3)}
+.submit{width:100%;margin-top:18px;border:0;background:linear-gradient(160deg,var(--cinnabar),#9a2017);color:#fff;font-family:"Noto Serif TC",serif;font-weight:700;font-size:17px;letter-spacing:.1em;border-radius:9px;padding:14px;cursor:pointer;box-shadow:0 4px 12px rgba(178,42,31,.3)}
+body.editmode .submit{background:linear-gradient(160deg,var(--blue),#244f74);box-shadow:0 4px 12px rgba(47,111,159,.3)}
 .submit:hover{filter:brightness(1.06)} .submit:disabled{opacity:.5;cursor:not-allowed}
 .hint{font-size:11.5px;color:var(--muted);text-align:center;margin-top:10px;line-height:1.7}
-
 .msg{display:none;text-align:center;padding:40px 16px}
 .msg .ic{font-size:46px;color:var(--cinnabar)} .msg.ok .ic{color:#2e9b57}
 .msg .big{font-family:"Noto Serif TC",serif;font-size:20px;margin:10px 0 6px;color:var(--ink)}
@@ -77,31 +88,46 @@ select:focus,input:focus{border-color:var(--cinnabar);box-shadow:0 0 0 3px rgba(
 <div class="wrap">
   <div class="hero">
     <div class="eyebrow">雲林 · 元長 · 山內村　隴西李氏</div>
-    <h1>族譜補登投稿</h1>
-    <p>幫忙補齊家族成員：先一層層選到「父母是誰」，再填上新成員（可一次多位）。送出後由族譜管理者審核併入，不會直接更動主族譜。</p>
+    <h1>族譜補登 / 修訂</h1>
+    <p>幫忙把家族資料補得更完整。可「新增成員」或「修改既有資料」（改錯字、補備註、補生卒年）。送出後由管理者審核，不會直接更動主族譜。</p>
   </div>
 
   <div id="loading" class="loading"><div class="spin"></div>讀取族譜中…</div>
   <div id="errbox" class="errbox"></div>
 
   <div id="form" style="display:none">
+    <div class="modewrap">
+      <div class="modeseg" id="modeSeg">
+        <button data-mode="add" class="on">＋ 新增成員</button>
+        <button data-mode="edit">✎ 修改資料</button>
+      </div>
+    </div>
+
     <div class="step">
       <div class="step-h"><div class="step-no">1</div><div class="step-t">選擇所屬房系</div></div>
       <select id="houseSel"><option value="">— 請選擇 —</option></select>
     </div>
 
     <div class="step" id="chainStep" style="display:none">
-      <div class="step-h"><div class="step-no">2</div><div class="step-t">逐代選到「父母」</div></div>
-      <div class="step-sub">從上往下一代一代選；選到要新增者的父母為止，下一格留「就以…為父母」即可。</div>
+      <div class="step-h"><div class="step-no">2</div><div class="step-t" id="chainTitle">逐代選到「父母」</div></div>
+      <div class="step-sub" id="chainSub">從上往下一代一代選；選到要新增者的父母為止。</div>
       <div id="chain"></div>
       <div class="parent-now" id="parentNow"></div>
     </div>
 
+    <!-- 新增模式 -->
     <div class="step" id="peopleStep" style="display:none">
       <div class="step-h"><div class="step-no">3</div><div class="step-t">填寫新增成員</div></div>
       <div class="step-sub">可一次新增多位（都掛在上面選定的父母底下）。姓名請含姓。</div>
       <div id="people"></div>
       <button class="addbtn" id="addBtn">＋ 再加一位</button>
+    </div>
+
+    <!-- 修改模式 -->
+    <div class="step" id="editStep" style="display:none">
+      <div class="step-h"><div class="step-no">3</div><div class="step-t">修改本人資料</div></div>
+      <div class="step-sub">只改你要更正的欄位即可；沒動的會維持原樣。</div>
+      <div id="editForm"></div>
     </div>
 
     <div class="step" id="byStep" style="display:none">
@@ -113,7 +139,7 @@ select:focus,input:focus{border-color:var(--cinnabar);box-shadow:0 0 0 3px rgba(
     </div>
 
     <button class="submit" id="submitBtn" style="display:none">送　出　投　稿</button>
-    <div class="hint" id="hint" style="display:none">送出後資料會進入「投稿」分頁等待審核，不會立即出現在族譜上。</div>
+    <div class="hint" id="hint" style="display:none">送出後會進入待審清單，不會立即出現在族譜上。</div>
   </div>
 
   <div class="msg" id="msg"></div>
@@ -121,11 +147,10 @@ select:focus,input:focus{border-color:var(--cinnabar);box-shadow:0 0 0 3px rgba(
 
 <script>
 /* ===== 設定：與族譜網頁用同一個 GAS /exec 網址 ===== */
-const GAS_URL = "https://script.google.com/macros/s/AKfycbwIDvUQNOJpHME353GAC451p8awaz2Q02qCH-LLyxA7UZZhZKM1Ib0qAbLOnBtjfxp44A/exec";
+const GAS_URL = "";
 
 const CN={'一':1,'二':2,'三':3,'四':4,'五':5,'六':6,'七':7,'八':8,'九':9,'十':10};
 function genOfKey(k){const m=String(k).match(/^第(.+)代$/);if(!m)return null;return CN[m[1]]||parseInt(m[1])||null;}
-function genCN(n){const a=['','一','二','三','四','五','六','七','八','九','十'];return (n<=10?a[n]:n)+'代';}
 function parentName(note){return note?note.replace(/[長次三四五六七八九十兩幼么元滿大小細]?[子女男]$/,'').trim():'';}
 function numCN(n){const a=['','一','二','三','四','五','六','七','八','九','十'];if(n<=10)return a[n];if(n<20)return '十'+a[n-10];return String(n);}
 function rankRole(n,sex){return (n===1?'長':n===2?'次':numCN(n))+(sex==='女'?'女':'子');}
@@ -138,7 +163,7 @@ function buildHouse(rows){
     if(!name)return;
     const note=(r['備註']||'').trim();
     const sexCN=(String(r['子女']||'').trim()==='女')?'女':'子';
-    nodes.push({row:idx,gen,name,note,sexCN,role:'',children:[]});
+    nodes.push({row:idx,gen,name,note,sexCN,role:'',children:[],raw:r,id:String(r['編號']||'').trim()});
   });
   let root=null;
   nodes.forEach((n,i)=>{
@@ -152,7 +177,6 @@ function buildHouse(rows){
   return root;
 }
 
-/* ---- 取資料（JSONP；本機測試用 __MOCK__）---- */
 function jsonp(url){return new Promise((res,rej)=>{
   const cb='__cb_'+Math.random().toString(36).slice(2);const s=document.createElement('script');
   window[cb]=d=>{res(d);delete window[cb];s.remove();};
@@ -161,8 +185,9 @@ function jsonp(url){return new Promise((res,rej)=>{
   setTimeout(()=>{if(window[cb]){delete window[cb];s.remove();rej(new Error('逾時'));}},12000);
 });}
 
-let HOUSES={};   // 房名 -> root
+let HOUSES={};
 const HOUSE_LABEL={'李墻':'大房（李墻）','李仁':'二房（李仁）','李居':'三房（李居）'};
+let mode='add';
 
 async function init(){
   let data=null;
@@ -177,18 +202,28 @@ async function init(){
 }
 function showErr(m){document.getElementById('loading').style.display='none';const e=document.getElementById('errbox');e.style.display='block';e.textContent='⚠ '+m;}
 
+/* ---- 模式切換 ---- */
+document.querySelectorAll('#modeSeg button').forEach(b=>b.addEventListener('click',()=>{
+  mode=b.dataset.mode;
+  document.querySelectorAll('#modeSeg button').forEach(x=>{x.classList.toggle('on',x===b);x.classList.toggle('edit',x===b&&mode==='edit');});
+  document.body.classList.toggle('editmode',mode==='edit');
+  document.getElementById('chainTitle').textContent = mode==='add'?'逐代選到「父母」':'逐代選到「本人」';
+  document.getElementById('chainSub').textContent = mode==='add'?'從上往下一代一代選；選到要新增者的父母為止。':'從上往下選；選到「要修改的那個人」本人為止。';
+  document.getElementById('submitBtn').textContent = mode==='add'?'送　出　投　稿':'送　出　修　訂';
+  if(houseSel.value){ chain=[HOUSES[houseSel.value]]; renderChain(); }
+}));
+
 /* ---- 逐代連動 ---- */
 let chain=[];
 const houseSel=document.getElementById('houseSel');
 houseSel.addEventListener('change',()=>{
   const h=houseSel.value;
-  if(!h){document.getElementById('chainStep').style.display='none';document.getElementById('peopleStep').style.display='none';document.getElementById('byStep').style.display='none';document.getElementById('submitBtn').style.display='none';document.getElementById('hint').style.display='none';return;}
+  const show=!!h;
+  ['chainStep','byStep'].forEach(id=>document.getElementById(id).style.display=show?'block':'none');
+  document.getElementById('submitBtn').style.display=show?'block':'none';
+  document.getElementById('hint').style.display=show?'block':'none';
+  if(!show){document.getElementById('peopleStep').style.display='none';document.getElementById('editStep').style.display='none';return;}
   chain=[HOUSES[h]];
-  document.getElementById('chainStep').style.display='block';
-  document.getElementById('peopleStep').style.display='block';
-  document.getElementById('byStep').style.display='block';
-  document.getElementById('submitBtn').style.display='block';
-  document.getElementById('hint').style.display='block';
   renderChain();
 });
 function renderChain(){
@@ -199,15 +234,27 @@ function renderChain(){
     const row=document.createElement('div');row.className='chain-row';
     const tag=document.createElement('span');tag.className='gtag';tag.textContent='選 第'+numCN(parent.gen+1)+'代';
     const sel=document.createElement('select');
-    const ph=document.createElement('option');ph.value='';ph.textContent='▸ 就以「'+parent.name+'」為父母（第'+numCN(parent.gen)+'代）';sel.appendChild(ph);
+    const ph=document.createElement('option');ph.value='';
+    ph.textContent = (mode==='add')
+      ? '▸ 就以「'+parent.name+'」為父母（第'+numCN(parent.gen)+'代）'
+      : '▸ 就修改「'+parent.name+'」本人（第'+numCN(parent.gen)+'代）';
+    sel.appendChild(ph);
     parent.children.forEach((c,idx)=>{const o=document.createElement('option');o.value=idx;o.textContent=c.name+'　'+(c.role||'');sel.appendChild(o);});
     if(chain[i+1]){const idx=parent.children.indexOf(chain[i+1]);if(idx>=0)sel.value=String(idx);}
     sel.addEventListener('change',()=>{chain=chain.slice(0,i+1);if(sel.value!=='')chain.push(parent.children[+sel.value]);renderChain();});
     row.appendChild(tag);row.appendChild(sel);box.appendChild(row);
   }
   const p=chain[chain.length-1];
-  document.getElementById('parentNow').innerHTML=
-    `新成員將登記為 <b>${p.name}</b><span class="g">（第${numCN(p.gen)}代）</span> 的子女，屬 <b>第${numCN(p.gen+1)}代</b>。`;
+  if(mode==='add'){
+    document.getElementById('peopleStep').style.display='block';
+    document.getElementById('editStep').style.display='none';
+    document.getElementById('parentNow').innerHTML=`新成員將登記為 <b>${p.name}</b><span class="g">（第${numCN(p.gen)}代）</span> 的子女，屬 <b>第${numCN(p.gen+1)}代</b>。`;
+  }else{
+    document.getElementById('peopleStep').style.display='none';
+    document.getElementById('editStep').style.display='block';
+    document.getElementById('parentNow').innerHTML=`將修改 <b>${p.name}</b><span class="g">（第${numCN(p.gen)}代${p.id?'　'+p.id:''}）</span> 的資料。再往下選可改成其子孫。`;
+    renderEdit(p);
+  }
 }
 
 /* ---- 新增成員 ---- */
@@ -225,7 +272,7 @@ function renderPeople(){
         <div><label>生年（選填）</label><input type="text" data-f="birth" value="${p.birth}" placeholder="例：1990"></div>
         <div><label>卒年（選填）</label><input type="text" data-f="death" value="${p.death}" placeholder="在世留白"></div>
         <div class="full"><label>照片網址（選填）</label><input type="text" data-f="photo" value="${p.photo}" placeholder="https://…"></div>
-        <div class="full"><label>備註（選填）</label><input type="text" data-f="note" value="${p.note}" placeholder="如：XXX長子、XXX次女…"></div>
+        <div class="full"><label>備註（選填）</label><input type="text" data-f="note" value="${p.note}" placeholder="如：早年遷居…"></div>
       </div>`;
     d.querySelectorAll('input[data-f]').forEach(inp=>inp.addEventListener('input',()=>{p[inp.dataset.f]=inp.value;}));
     d.querySelectorAll('.sexseg button').forEach(b=>b.addEventListener('click',()=>{p.sex=b.dataset.sex;d.querySelectorAll('.sexseg button').forEach(x=>x.classList.toggle('on',x===b));}));
@@ -235,31 +282,98 @@ function renderPeople(){
 }
 document.getElementById('addBtn').addEventListener('click',addPerson);
 
+/* ---- 修改本人 ---- */
+let editTarget=null, editVals={};
+function curOf(p,field){
+  if(field==='姓名') return p.name;
+  return String((p.raw&&p.raw[field])||'').trim();
+}
+function renderEdit(p){
+  editTarget=p; editVals={};
+  const noId = !p.id;
+  const f=(label,field,ph)=>{
+    const cur=curOf(p,field);
+    return `<div class="${field==='備註'?'full':''}">
+      <label>${label}</label>
+      <input type="text" data-ef="${field}" value="${cur.replace(/"/g,'&quot;')}" placeholder="${ph||''}">
+      <div class="curhint">原值：${cur||'（空白）'}</div></div>`;
+  };
+  const box=document.getElementById('editForm');
+  box.innerHTML=`<div class="person">
+    <span class="pno">本人${p.id?`<span class="idtag">${p.id}</span>`:''}</span>
+    ${noId?'<div class="curhint" style="color:var(--cinnabar)">⚠ 此人尚無編號，請先請管理者執行「補編號」後再修改。</div>':''}
+    <div class="grid">
+      ${f('姓名','姓名','含姓全名')}
+      <div><label>子 / 女</label><div class="sexseg" id="editSex">
+        <button data-sex="子" class="${p.sexCN==='女'?'':'on'}">子</button>
+        <button data-sex="女" class="${p.sexCN==='女'?'on':''}">女</button></div>
+        <div class="curhint">原值：${p.sexCN}</div></div>
+      ${f('配偶（多位用、分隔）','配偶','例：王○○')}
+      ${f('生年','生年','例：1950')}
+      ${f('卒年','卒年','在世留白')}
+      ${f('備註','備註','一般免改；系統用來連結父母')}
+    </div></div>`;
+  // 文字欄
+  box.querySelectorAll('input[data-ef]').forEach(inp=>{
+    inp.addEventListener('input',()=>{
+      const f=inp.dataset.ef, cur=curOf(p,f);
+      if(inp.value.trim()!==cur){editVals[f]=inp.value.trim();inp.parentElement.classList.add('edited');}
+      else{delete editVals[f];inp.parentElement.classList.remove('edited');}
+    });
+  });
+  // 子女
+  const sexCur=p.sexCN;
+  box.querySelectorAll('#editSex button').forEach(b=>b.addEventListener('click',()=>{
+    box.querySelectorAll('#editSex button').forEach(x=>x.classList.toggle('on',x===b));
+    const v=b.dataset.sex;
+    if(v!==sexCur)editVals['子女']=v; else delete editVals['子女'];
+  }));
+  document.getElementById('submitBtn').disabled=noId;
+}
+
 /* ---- 送出 ---- */
 document.getElementById('submitBtn').addEventListener('click',async()=>{
-  const valid=people.filter(p=>p.name.trim());
   if(!houseSel.value){alert('請先選擇房系');return;}
+  if(mode==='add') return submitAdd();
+  return submitEdit();
+});
+
+async function submitAdd(){
+  const valid=people.filter(p=>p.name.trim());
   if(!valid.length){alert('請至少填一位新成員的姓名');return;}
   const parent=chain[chain.length-1];
   const payload={house:houseSel.value,parent:parent.name,parentGen:parent.gen,
-    by:document.getElementById('by').value.trim(),contact:document.getElementById('contact').value.trim(),
+    by:val('by'),contact:val('contact'),
     people:valid.map(p=>({name:p.name.trim(),sex:p.sex,spouse:p.spouse.trim(),birth:p.birth.trim(),death:p.death.trim(),photo:p.photo.trim(),note:p.note.trim()}))};
-  const btn=document.getElementById('submitBtn');btn.disabled=true;btn.textContent='送出中…';
+  await send('submit',payload,()=>doneMsg(`已送出 ${valid.length} 位新增`,'感謝補登！資料進入待審，管理者確認後併入。'));
+}
+
+async function submitEdit(){
+  const p=editTarget;
+  if(!p){alert('請先選到要修改的人');return;}
+  if(!p.id){alert('此人尚無編號，請先請管理者執行「補編號」。');return;}
+  const fields=Object.keys(editVals);
+  if(!fields.length){alert('你還沒有變更任何欄位');return;}
+  const changes=fields.map(f=>({field:f,old:(f==='子女'?p.sexCN:curOf(p,f)),val:editVals[f]}));
+  const payload={id:p.id,house:houseSel.value,target:p.name,by:val('by'),contact:val('contact'),changes:changes};
+  await send('edit',payload,()=>doneMsg(`已送出 ${changes.length} 項修訂`,`對象：${p.name}（${p.id}）。管理者核可後會套用，改名會自動連動。`));
+}
+
+function val(id){return document.getElementById(id).value.trim();}
+async function send(action,payload,ok){
+  const btn=document.getElementById('submitBtn');btn.disabled=true;const t=btn.textContent;btn.textContent='送出中…';
   try{
-    if(window.__MOCK_SUBMIT__){ await window.__MOCK_SUBMIT__(payload); done(valid.length); }
-    else{
-      const url=GAS_URL+(GAS_URL.includes('?')?'&':'?')+'action=submit&payload='+encodeURIComponent(JSON.stringify(payload));
-      const r=await jsonp(url);
-      if(r&&r.ok) done(valid.length); else throw new Error(r&&r.error||'未知錯誤');
-    }
-  }catch(e){ btn.disabled=false;btn.textContent='送　出　投　稿'; alert('送出失敗：'+e.message+'\n請稍後再試，或聯絡族譜管理者。'); }
-});
-function done(n){
+    if(window.__MOCK_SUBMIT__){ await window.__MOCK_SUBMIT__(action,payload); ok(); return; }
+    const url=GAS_URL+(GAS_URL.includes('?')?'&':'?')+'action='+action+'&payload='+encodeURIComponent(JSON.stringify(payload));
+    const r=await jsonp(url);
+    if(r&&r.ok) ok(); else throw new Error(r&&r.error||'未知錯誤');
+  }catch(e){ btn.disabled=false;btn.textContent=t; alert('送出失敗：'+e.message+'\n請稍後再試，或聯絡族譜管理者。'); }
+}
+function doneMsg(big,sm){
   document.getElementById('form').style.display='none';
   const m=document.getElementById('msg');m.className='msg ok';m.style.display='block';
-  m.innerHTML=`<div class="ic">✓</div><div class="big">已送出 ${n} 位，感謝補登！</div>
-    <div class="sm">資料已進入待審清單，<br>族譜管理者確認後會併入族譜。</div>
-    <button onclick="location.reload()">再投一筆</button>`;
+  m.innerHTML=`<div class="ic">✓</div><div class="big">${big}</div><div class="sm">${sm}</div>
+    <button onclick="location.reload()">再填一筆</button>`;
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
